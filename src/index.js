@@ -19,12 +19,26 @@ const dict = {
   17: 'seventeen',
   18: 'eighteen',
   19: 'nineteen',
-  20: 'twenty'
+  20: 'twenty',
+  30: 'thirty',
+  40: 'fourty',
+  50: 'fifty',
+  60: 'sixty',
+  70: 'seventy',
+  80: 'eighty',
+  90: 'ninety',
 }
 
 
 
 
 module.exports = function toReadable (number) {
-  return dict[number];
+  if (number <= 20) {
+    return dict[number];
+  } else if (number < 100) {
+    let div = number / 10;
+    let mod = number % 10;
+  }
+
+
 }
