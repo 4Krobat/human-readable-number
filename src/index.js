@@ -1,5 +1,5 @@
 const dict = {
-  0: 'zero',
+  0: '',
   1: 'one',
   2: 'two',
   3: 'three',
@@ -21,7 +21,7 @@ const dict = {
   19: 'nineteen',
   20: 'twenty',
   30: 'thirty',
-  40: 'fourty',
+  40: 'forty',
   50: 'fifty',
   60: 'sixty',
   70: 'seventy',
@@ -33,12 +33,17 @@ const dict = {
 
 
 module.exports = function toReadable (number) {
-  if (number <= 20) {
+  if (number === 0) {
+    return 'zero';
+  } else if (number in dict) {
     return dict[number];
   } else if (number < 100) {
-    let div = number / 10;
+    let div = Math.floor(number / 10) * 10;
     let mod = number % 10;
+    return `${toReadable(div)} ${toReadable(mod)}`.trim();
+  } else {
+    let div100 = Math.floor(number / 100);
+    let mod100 = number % 100;
+    return `${toReadable(div100)} hundred ${toReadable(mod100)}`.trim();
   }
-
-
 }
