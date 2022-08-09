@@ -33,9 +33,7 @@ const dict = {
 
 
 module.exports = function toReadable (number) {
-  if (number === 0) {
-    return 'zero';
-  } else if (number in dict) {
+  if (number in dict) {
     return dict[number];
   } else if (number < 100) {
     let div = Math.floor(number / 10) * 10;
